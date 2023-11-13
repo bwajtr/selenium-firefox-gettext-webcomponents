@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selenium - getText()</title>
+    <script type="module">
+
+        class TestContainer extends HTMLElement {
+            connectedCallback() {
+                const shadow = this.attachShadow({mode: 'open'});
+                shadow.innerHTML = `
+                    <div>
+                        <slot></slot>
+                    </div>`;
+            }
+        }
+
+        customElements.define('test-container', TestContainer);
+    </script>
+</head>
+<body>
+<div id="ordinary-element">
+    <div>Text inside ordinary element</div>
+</div>
+<test-container id="test-web-component">Text inside web component slot</test-container>
+</body>
+</html>
